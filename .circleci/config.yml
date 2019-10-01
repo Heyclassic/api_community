@@ -53,9 +53,8 @@ jobs:
           name: database setup
           command: |
             gem install bundler
-            bundle exec rails db:create
-            bundle exec rails db:schema:load
-            bundle exec rails db:migrate
+            bundle exec rake db:create
+            bundle exec rake db:schema:load
 
       # run tests!
       - run:
