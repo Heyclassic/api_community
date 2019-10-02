@@ -47,6 +47,7 @@ group :test do
   gem 'shoulda-matchers'
 end
 
+gem "aws-sdk-s3", require: false
 gem 'fabrication'
 gem 'faker'
 gem 'pry'
