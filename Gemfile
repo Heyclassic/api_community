@@ -48,6 +48,7 @@ group :test do
 end
 
 gem "aws-sdk-s3", require: false
+gem 'awesome_print'
 gem 'fabrication'
 gem 'faker'
 gem 'pry'
