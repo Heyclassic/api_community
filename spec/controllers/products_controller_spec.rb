@@ -21,4 +21,10 @@ RSpec.describe ProductsController, type: :controller do
     expect(response.status).to eq 200
     expect(response.body).to include "Product updated"
   end
+
+  it 'destroys a product' do
+    delete :destroy, params: { id: product.id }, as: :json
+    expect(response.status).to eq 200
+    expect(response.body).to include "Product deleted"
+  end
 end
