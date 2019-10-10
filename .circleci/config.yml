@@ -54,9 +54,8 @@ jobs:
           command: |
             gem install bundler
             bundle exec rake db:create
-            bundle exec rake db:schema:load
-            RAILS_ENV=test bundle exec rails db:migrate
-            bundle exec rails db:migrate
+            bundle exec rake db:structure:load
+
       # run tests!
       - run:
           name: run tests
