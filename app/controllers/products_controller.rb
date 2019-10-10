@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    render json: @products
+    render json: ProductSerializer.new(@products).serializable_hash
   end
 
   def new
@@ -19,12 +19,12 @@ class ProductsController < ApplicationController
   end
 
   def show
-    render json: @product
+    render json: ProductSerializer.new(@product)
   end
 
   def update
     if @product.update(product_params)
-      render json: { product: @product, message: "Product updated" }
+      render json: { product: ProductSerializer.new(@product), message: "Product updated" }
     else
       render json: { error: @product.errors }
     end
