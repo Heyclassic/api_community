@@ -4,6 +4,7 @@ AllCops:
     - "db/**/*"
     - "config/initializers/*"
     - "vendor/**/*"
+    - "spec/**/*"
 
 Bundler/OrderedGems:
   Enabled: false

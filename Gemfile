@@ -52,6 +52,7 @@ gem "google-cloud-storage", "~> 1.11", require: false
 gem 'awesome_print'
 gem 'fabrication'
 gem 'faker'
+gem 'fast_jsonapi'
 gem 'pry'
 gem 'pry-rails'
 gem 'rubocop', require: false
