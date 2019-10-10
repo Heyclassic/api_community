@@ -9,11 +9,12 @@ RSpec.describe ProductsController, type: :controller do
     expect(response.body).not_to be_empty
   end
 
-  it 'shows a product' do
+  it 'shows a product and its user' do
     get :show, params: { id: product.id }, as: :json
     expect(response.status).to eq 200
     expect(response.body).to include(product.name)
     expect(response.body).to include(product.description)
+    expect(response.body).to include(product.user&.name)
   end
 
   it 'updates a product' do
