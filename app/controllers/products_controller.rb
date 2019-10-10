@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      render json: { product: @product, message: "Product updated" }
+      render json: { product: ProductSerializer.new(@product), message: "Product updated" }
     else
       render json: { error: @product.errors }
     end
