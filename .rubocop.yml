@@ -1,0 +1,48 @@
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - "db/**/*"
+    - "config/initializers/*"
+    - "vendor/**/*"
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Layout/BlockAlignment:
+  Enabled: false
+
+Layout/IndentationWidth:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/AbcSize:
+  Enabled: false
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/BlockComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Style/ExpandPathArguments:
+  Enabled: false
+
+Style/MixinUsage:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false

@@ -23,9 +23,9 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      render json: { user: @user, message: "User updated"}
+      render json: { user: @user, message: "User updated" }
     else
-      render json: {message: @user.errors}
+      render json: { message: @user.errors }
     end
   end
 

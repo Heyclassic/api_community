@@ -9,9 +9,9 @@ jobs:
       # specify the version you desire here
       - image: circleci/ruby:2.4.1-node-browsers
         environment:
-            RAILS_ENV: test
-            PGHOST: 127.0.0.1
-            PGUSER: root
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -39,7 +39,6 @@ jobs:
             gem update --system
             gem install bundler
             bundle install --jobs=4 --retry=3 --path vendor/bundle
-
 
       - run:
           name: install psql
@@ -71,8 +70,8 @@ jobs:
 
       # run tests!
       - run:
-          name: run tests
-          command: bundle exec rspec
+          name: run tests and linter
+          command: bundle exec rspec && bundle exec rubocop
 
       # collect reports
       - store_test_results:
