@@ -39,7 +39,7 @@ jobs:
             gem update --system
             gem install bundler
             bundle install --jobs=4 --retry=3 --path vendor/bundle
-            sudo apt install -y postgresql-client
+            sudo apt install -y postgresql-client --fix-missing
 
       - run:
           name: Wait for db
