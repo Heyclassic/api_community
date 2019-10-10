@@ -3,4 +3,8 @@ class User < ApplicationRecord
 
   has_many :products
   has_one_attached :avatar
+
+  def avatar_path
+    ActiveStorage::Blob.service.path_for(avatar.key) if avatar.attached?
+  end
 end
