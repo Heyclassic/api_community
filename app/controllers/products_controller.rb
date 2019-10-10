@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    render json: @products
+    render json: ProductSerializer.new(@products)
   end
 
   def new
@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    render json: @product
+    render json: ProductSerializer.new(@product)
   end
 
   def update
