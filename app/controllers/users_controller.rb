@@ -30,6 +30,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    return unless @user.destroy
+
+    render json: { message: "User deleted" }
   end
 
   private
