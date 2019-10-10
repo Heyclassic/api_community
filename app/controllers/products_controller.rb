@@ -24,19 +24,20 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      render json: { product: @product, message: "Product updated"}
+      render json: { product: @product, message: "Product updated" }
     else
       render json: { error: @product.errors }
     end
   end
 
   def destroy
-    if @product.destroy
-      render json: { message: "Product deleted" }
-    end
+    return unless @product.destroy
+
+    render json: { message: "Product deleted" }
   end
 
   private
+
   def set_product_user
     @user ||= User.find(params[:user_id])
   end
@@ -46,6 +47,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :user_id )
+    params.require(:product).permit(:name, :description, :user_id)
   end
 end

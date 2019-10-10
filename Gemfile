@@ -45,6 +45,7 @@ group :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem "rspec_junit_formatter"
 end
 
 gem "google-cloud-storage", "~> 1.11", require: false
@@ -53,5 +54,6 @@ gem 'fabrication'
 gem 'faker'
 gem 'pry'
 gem 'pry-rails'
+gem 'rubocop', require: false
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
