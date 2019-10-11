@@ -48,6 +48,7 @@ group :test do
   gem "rspec_junit_formatter"
 end
 
+gem 'acts-as-taggable-on', '~> 6.0'
 gem "google-cloud-storage", "~> 1.11", require: false
 gem 'awesome_print'
 gem 'fabrication'
