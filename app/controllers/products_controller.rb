@@ -23,15 +23,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if params[:tags].present?
-      @product.tag_list.add(params[:tags], parse: true)
-      @product.save
-    end
-
-    if params[:remove_tags].present?
-      @product.tag_list.remove(params[:remove_tags], parse: true)
-      @product.save
-    end
+    add_remove_tags
 
     if @product.update(product_params)
       render json: { product: ProductSerializer.new(@product), message: "Product updated" }
@@ -44,6 +36,18 @@ class ProductsController < ApplicationController
     return unless @product.destroy
 
     render json: { message: "Product deleted" }
+  end
+
+  def add_remove_tags
+    if params[:tags].present?
+      @product.tag_list.add(params[:tags], parse: true)
+      @product.save
+    end
+
+    if params[:remove_tags].present?
+      @product.tag_list.remove(params[:remove_tags], parse: true)
+      @product.save
+    end
   end
 
   private

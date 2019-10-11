@@ -6,7 +6,5 @@ class ProductSerializer
     UserSerializer.new(object.user)
   end
 
-  attribute :tags do |object|
-    object.tag_list
-  end
+  attribute :tags, &:tag_list
 end
