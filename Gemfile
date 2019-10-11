@@ -49,6 +49,7 @@ group :test do
 end
 
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'acts_as_votable'
 gem "google-cloud-storage", "~> 1.11", require: false
 gem 'awesome_print'
 gem 'fabrication'
