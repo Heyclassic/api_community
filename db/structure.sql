@@ -189,7 +189,7 @@ CREATE TABLE public.taggings (
 --
 
 CREATE SEQUENCE public.taggings_id_seq
-    AS integer
+    -- AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
