@@ -5,4 +5,8 @@ class ProductSerializer
   attribute :maker do |object|
     UserSerializer.new(object.user)
   end
+
+  attribute :tags do |object|
+    object.tag_list
+  end
 end

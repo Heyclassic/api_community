@@ -23,6 +23,11 @@ class ProductsController < ApplicationController
   end
 
   def update
+    if params[:tags].present?
+      @product.tag_list.add(params[:tags], parse: true)
+      @product.save
+    end
+
     if @product.update(product_params)
       render json: { product: ProductSerializer.new(@product), message: "Product updated" }
     else
