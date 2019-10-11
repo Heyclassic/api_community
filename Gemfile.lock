@@ -44,6 +44,7 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (6.0.0)
       activerecord (~> 5.0)
+    acts_as_votable (0.12.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     arel (9.0.0)
@@ -243,6 +244,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 6.0)
+  acts_as_votable
   awesome_print
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)

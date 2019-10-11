@@ -50,6 +50,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def add_like
+    if params[:like].present? && @current_user
+      @product.liked_by @current_user
+    end
+  end
   private
 
   def set_product_user
