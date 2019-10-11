@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   include Rails.application.routes.url_helpers
   belongs_to :user
+  has_many :comments, through: :user
   has_many_attached :images
 
   def images_paths
