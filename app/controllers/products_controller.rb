@@ -28,6 +28,11 @@ class ProductsController < ApplicationController
       @product.save
     end
 
+    if params[:remove_tags].present?
+      @product.tag_list.remove(params[:remove_tags], parse: true)
+      @product.save
+    end
+
     if @product.update(product_params)
       render json: { product: ProductSerializer.new(@product), message: "Product updated" }
     else
