@@ -23,5 +23,6 @@ module CommunityApi
     config.load_defaults 5.2
     config.active_record.schema_format = :sql
     config.api_only = true
+    config.autoload_paths << Rails.root.join('lib')
   end
 end

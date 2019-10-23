@@ -189,6 +189,7 @@ CREATE TABLE public.taggings (
 --
 
 CREATE SEQUENCE public.taggings_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -219,6 +220,7 @@ CREATE TABLE public.tags (
 --
 
 CREATE SEQUENCE public.tags_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -243,7 +245,8 @@ CREATE TABLE public.users (
     email character varying,
     password_digest character varying,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    token character varying
 );
 
 
@@ -264,6 +267,44 @@ CREATE SEQUENCE public.users_id_seq
 --
 
 ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: votes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.votes (
+    id integer NOT NULL,
+    votable_type character varying,
+    votable_id integer,
+    voter_type character varying,
+    voter_id integer,
+    vote_flag boolean,
+    vote_scope character varying,
+    vote_weight integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: votes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.votes_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: votes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.votes_id_seq OWNED BY public.votes.id;
 
 
 --
@@ -313,6 +354,13 @@ ALTER TABLE ONLY public.tags ALTER COLUMN id SET DEFAULT nextval('public.tags_id
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Name: votes id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.votes ALTER COLUMN id SET DEFAULT nextval('public.votes_id_seq'::regclass);
 
 
 --
@@ -385,6 +433,14 @@ ALTER TABLE ONLY public.tags
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: votes votes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.votes
+    ADD CONSTRAINT votes_pkey PRIMARY KEY (id);
 
 
 --
@@ -486,6 +542,20 @@ CREATE UNIQUE INDEX index_tags_on_name ON public.tags USING btree (name);
 
 
 --
+-- Name: index_votes_on_votable_id_and_votable_type_and_vote_scope; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_votes_on_votable_id_and_votable_type_and_vote_scope ON public.votes USING btree (votable_id, votable_type, vote_scope);
+
+
+--
+-- Name: index_votes_on_voter_id_and_voter_type_and_vote_scope; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_votes_on_voter_id_and_voter_type_and_vote_scope ON public.votes USING btree (voter_id, voter_type, vote_scope);
+
+
+--
 -- Name: taggings_idx; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -547,6 +617,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191011090620'),
 ('20191011090621'),
 ('20191011090622'),
-('20191011090623');
+('20191011090623'),
+('20191011122316'),
+('20191016134024');
 
 

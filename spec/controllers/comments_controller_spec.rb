@@ -13,12 +13,13 @@ RSpec.describe CommentsController do
   end
 
   context 'the comment is already persisted' do
-    let(:comment) { Fabricate(:comment, product_id: product.id) }
+    let(:comment) { Fabricate(:comment, body: "awesome product", product_id: product.id) }
 
     it 'lists all comments' do
       get :index, params: { product_id: product.id }, as: :json
       expect(response.body).not_to be_empty
       expect(response.status).to eq 200
+      expect(response.body).to include(comment.body)
     end
 
     it 'shows comment' do

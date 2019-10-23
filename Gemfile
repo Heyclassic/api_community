@@ -57,5 +57,6 @@ gem 'fast_jsonapi'
 gem 'pry'
 gem 'pry-rails'
 gem 'rubocop', require: false
+gem 'simple_command'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
