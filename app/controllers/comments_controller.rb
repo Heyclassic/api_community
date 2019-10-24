@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, except: [:index, :new, :create]
   before_action :set_product
-  skip_before_action :authenticate_request, only: [:index]
+  skip_before_action :authenticate_request, only: [:index, :show]
 
   def index
     @comments = @product.comments.order(created_at: :desc)

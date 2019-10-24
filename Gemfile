@@ -46,6 +46,7 @@ group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem "rspec_junit_formatter"
+  gem 'database_cleaner'
 end
 
 gem 'acts-as-taggable-on', '~> 6.0'
