@@ -1,9 +1,11 @@
 class CommentsController < ApplicationController
   before_action :set_comment, except: [:index, :new, :create]
   before_action :set_product
+  skip_before_action :authenticate_request, only: [:index, :show]
 
   def index
-    render json: @comments = @product.comments
+    @comments = @product.comments.order(created_at: :desc)
+    render json: @comments
   end
 
   def new
@@ -12,7 +14,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @product.comments.new(comment_params)
-    render json: { comment: @comment, message: "Comment added" } if @comment.save!
+    render json: { comment: @comment, product: @product, message: "Comment added" } if @comment.save!
   end
 
   def show
@@ -44,6 +46,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
+    params[:comment][:user_id] = current_user.id
     params.require(:comment).permit(:body, :product_id, :user_id)
   end
 end

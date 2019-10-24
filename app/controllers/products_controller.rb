@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create]
+  skip_before_action :authenticate_request, only: [:index, :show]
 
   def index
     @products = Product.all
@@ -10,7 +11,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = current_user.products.create(product_params)
     if @product.save
       render json: { product: @product, message: "Product created" }
     else
@@ -61,6 +62,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :user_id, :tag_list)
+    params.require(:product).permit(:name, :description, :user_id, :tag_list, :tags,
+                                    comments: [:id, :product_id, :user_id, :_destroy])
   end
 end

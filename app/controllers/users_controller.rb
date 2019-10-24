@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:index, :new, :create]
+  skip_before_action :authenticate_request
 
   def index
   end
@@ -10,7 +11,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.save!
       render json: { user: @user, message: "User created" }
     else
       render json: { message: @user.errors }

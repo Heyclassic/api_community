@@ -15,6 +15,9 @@ Layout/BlockAlignment:
 Layout/IndentationWidth:
   Enabled: false
 
+Lint/UselessAssignment:
+  Enabled: false
+
 Metrics/LineLength:
   Max: 120
 
@@ -43,6 +46,9 @@ Style/GuardClause:
   Enabled: false
 
 Style/MixinUsage:
+  Enabled: false
+
+Style/RescueStandardError:
   Enabled: false
 
 Style/StringLiterals:
