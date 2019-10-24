@@ -49,8 +49,9 @@ RSpec.describe ProductsController, type: :controller do
 
       it 'adds multiple tags at once' do
         put :update, params: { product: product, id: product.id, tags: tags_array }, as: :json
+        product_tags = product.tags.map(&:name)
         expect(response.body["tags"]).not_to be_empty
-        expect(product.tags.map(&:name) & tags_array).to match (tags_array)
+        expect((product_tags & tags_array).sort).to match (tags_array.sort)
       end
 
       it 'removes multiple tags at once' do
