@@ -31,7 +31,7 @@ RSpec.describe ProductsController, type: :controller do
 
     it 'creates a new tag' do
       new_tag = Faker::IndustrySegments.sector
-      put :update, params: { id: product.id, product: product, tags: new_tag }, as: :json
+      put :update, params: { id: product.id, tags: new_tag }, as: :json
       expect(response.body["tags"]).not_to be_empty
       # TODO check tag_list - possible bug
       expect(product.tags.map(&:name)).to include new_tag
@@ -48,7 +48,7 @@ RSpec.describe ProductsController, type: :controller do
       let(:tags_array) { tags_array = (1..3).map { |n| Faker::IndustrySegments.sector } }
 
       it 'adds multiple tags at once' do
-        put :update, params: { product: product, id: product.id, tags: tags_array }, as: :json
+        put :update, params: { id: product.id, tags: tags_array }, as: :json
         product_tags = product.reload.tags.map(&:name)
         expect(response.body["tags"]).not_to be_empty
         expect((product_tags & tags_array).sort).to match (tags_array.sort)
