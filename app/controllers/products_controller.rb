@@ -63,6 +63,6 @@ class ProductsController < ApplicationController
 
   def product_params
     params.permit(:name, :description, :user_id, :tag_list, :tags,
-                                    comments: [:id, :product_id, :user_id, :_destroy])
+                  comments: [:id, :product_id, :user_id, :_destroy])
   end
 end
