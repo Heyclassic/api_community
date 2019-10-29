@@ -50,11 +50,12 @@ group :test do
 end
 
 gem 'acts-as-taggable-on', '~> 6.0'
-gem "google-cloud-storage", "~> 1.11", require: false
 gem 'awesome_print'
+gem 'dotenv-rails', groups: [:development, :test, :production]
 gem 'fabrication'
 gem 'faker'
 gem 'fast_jsonapi'
+gem "google-cloud-storage", "~> 1.11", require: false
 gem 'pry'
 gem 'pry-rails'
 gem 'rubocop', require: false
