@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
   def update
     add_remove_tags
 
-    if @product.update(product_params)
+    if @product.save(product_params)
       render json: { product: ProductSerializer.new(@product), message: "Product updated" }
     else
       render json: { error: @product.errors }
@@ -62,7 +62,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :user_id, :tag_list, :tags,
+    params.permit(:name, :description, :user_id, :tag_list, :tags,
                                     comments: [:id, :product_id, :user_id, :_destroy])
   end
 end
