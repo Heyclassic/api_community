@@ -246,7 +246,8 @@ CREATE TABLE public.users (
     password_digest character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    token character varying
+    token character varying,
+    admin boolean
 );
 
 
@@ -542,6 +543,13 @@ CREATE UNIQUE INDEX index_tags_on_name ON public.tags USING btree (name);
 
 
 --
+-- Name: index_users_on_admin; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_users_on_admin ON public.users USING btree (admin);
+
+
+--
 -- Name: index_votes_on_votable_id_and_votable_type_and_vote_scope; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -619,6 +627,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191011090622'),
 ('20191011090623'),
 ('20191011122316'),
-('20191016134024');
+('20191016134024'),
+('20191029161608');
 
 

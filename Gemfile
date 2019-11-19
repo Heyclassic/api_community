@@ -56,6 +56,7 @@ gem 'fabrication'
 gem 'faker'
 gem 'fast_jsonapi'
 gem "google-cloud-storage", "~> 1.11", require: false
+gem 'pundit'
 gem 'pry'
 gem 'pry-rails'
 gem 'rubocop', require: false

@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
   end
 
   def update
+    authorize @comment
     if @comment.update(comment_params)
       render json: { comment: @comment, message: "Comment modified" }
     else
@@ -30,6 +31,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    authorize @comment
     return unless @comment.destroy
 
     render json: { message: "Comment deleted" }

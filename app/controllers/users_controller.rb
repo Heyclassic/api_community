@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:index, :new, :create]
   skip_before_action :authenticate_request
+  after_action :verify_policy_scoped, only: :index
 
   def index
+    @users = UserPolicy::Scope.new(current_user, User).resolve
+    render json: @users
   end
 
   def new
@@ -23,6 +26,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    authorize @user
     if @user.update(user_params)
       render json: { user: @user, message: "User updated" }
     else
@@ -31,6 +35,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    authorize @user
     return unless @user.destroy
 
     render json: { message: "User deleted" }

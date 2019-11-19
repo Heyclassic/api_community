@@ -24,6 +24,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    authorize @product
     add_remove_tags
 
     if @product.save(product_params)
@@ -34,6 +35,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    authorize @product
     return unless @product.destroy
 
     render json: { message: "Product deleted" }
