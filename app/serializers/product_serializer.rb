@@ -11,5 +11,4 @@ class ProductSerializer
   attribute :votes do |object|
     object.votes_for.size
   end
-
 end
