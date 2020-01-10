@@ -3,7 +3,7 @@ import { Theme, createStyles, makeStyles, useTheme } from '@material-ui/core/sty
 import CommentOutlinedIcon from '@material-ui/icons/CommentOutlined';
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import {FavoriteBorderOutlined, FavoriteIcon} from '@material-ui/icons/';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) =>
   );
 
 
-export default function ProductsCard({product, key, maker, comments, image, tags}) {
+export default function ProductsCard({product, key, maker, comments, image, tags, votes}) {
 
   const classes = useStyles();
   const theme = useTheme();
@@ -65,8 +65,8 @@ export default function ProductsCard({product, key, maker, comments, image, tags
         </div>
         <div className="like">
           <Button variant="outlined" className="like-button" minHeight="64" minWidth="68" aria-label="like">
-            <FavoriteIcon fontSize="small"/>
-            <Typography className="like-caption" variant="subtitle2">{product.attributes.comments.size}</Typography>
+            <FavoriteBorderOutlined fontSize="small"/>
+            <Typography className="like-caption" variant="subtitle2">{votes}</Typography>
           </Button>
         </div>
       </Card>

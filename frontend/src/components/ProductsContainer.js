@@ -8,8 +8,7 @@ const API_URL= "http://localhost:3000"
 export default function ProductsContainer(){
 
   const [products, setProducts] = useState([]);
-  const [makers, setMakers] = useState([]);
-  const [comments, setComments] = useState([]);
+
 
   useEffect(() => {
     const fetchData = async() => {
@@ -21,6 +20,7 @@ export default function ProductsContainer(){
       console.log(attributes_array[0].attributes.comments.length);
       console.log(attributes_array[0].attributes.images_paths);
       console.log(attributes_array[8].attributes.tags);
+      console.log(attributes_array[8].attributes.votes);
     };
     fetchData();
   }, []);
@@ -34,6 +34,7 @@ export default function ProductsContainer(){
                         comments={product.attributes.comments.length}
                         image={`http://localhost:3000/product5.jpg`}
                         tags={product.attributes.tags}
+                        votes={product.attributes.votes}
                         >
           </ProductsCard>
       )}
