@@ -20,6 +20,7 @@ export default function ProductsContainer(){
       console.log(attributes_array[0].attributes.maker.data.attributes.name);
       console.log(attributes_array[0].attributes.comments.length);
       console.log(attributes_array[0].attributes.images_paths);
+      console.log(attributes_array[8].attributes.tags);
     };
     fetchData();
   }, []);
@@ -32,6 +33,7 @@ export default function ProductsContainer(){
                         maker={product.attributes.maker.data.attributes.name}
                         comments={product.attributes.comments.length}
                         image={`http://localhost:3000/product5.jpg`}
+                        tags={product.attributes.tags}
                         >
           </ProductsCard>
       )}

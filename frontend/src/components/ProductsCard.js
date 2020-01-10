@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) =>
   );
 
 
-export default function ProductsCard({product, key, maker, comments, image}) {
+export default function ProductsCard({product, key, maker, comments, image, tags}) {
 
   const classes = useStyles();
   const theme = useTheme();
@@ -56,6 +56,7 @@ export default function ProductsCard({product, key, maker, comments, image}) {
               {maker}
             </Typography>
             <Typography>{product.attributes.description}</Typography>
+            {tags.map( tag => <Typography variant="subtitle2" className="tag">{tag}</Typography>)}
           </CardContent>
           <Button>
           <Typography variant="subtitle2">{comments}</Typography>
