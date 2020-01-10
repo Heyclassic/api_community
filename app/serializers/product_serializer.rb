@@ -7,4 +7,8 @@ class ProductSerializer
   end
 
   attribute :tags, &:tag_list
+
+  attribute :votes do |object|
+    object.votes_for.size
+  end
 end

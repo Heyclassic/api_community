@@ -49,6 +49,7 @@ group :test do
   gem 'database_cleaner'
 end
 
+gem 'acts_as_votable'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'awesome_print'
 gem 'dotenv-rails', groups: [:development, :test, :production]
