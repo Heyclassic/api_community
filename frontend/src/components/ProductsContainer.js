@@ -21,6 +21,7 @@ export default function ProductsContainer(){
       console.log(attributes_array[0].attributes.images_paths);
       console.log(attributes_array[8].attributes.tags);
       console.log(attributes_array[8].attributes.votes);
+      console.log(attributes_array[8].attributes.added);
     };
     fetchData();
   }, []);
@@ -32,7 +33,7 @@ export default function ProductsContainer(){
                         key={product[i]}
                         maker={product.attributes.maker.data.attributes.name}
                         comments={product.attributes.comments.length}
-                        image={`http://localhost:3000/product5.jpg`}
+                        image={`${API_URL}/product5.jpg`}
                         tags={product.attributes.tags}
                         votes={product.attributes.votes}
                         >
