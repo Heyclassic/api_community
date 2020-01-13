@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_request, only: [:index, :show]
 
   def index
-    @products = Product.all
+    @products = Product.order(created_at: :desc)
     render json: ProductSerializer.new(@products).serializable_hash
   end
 

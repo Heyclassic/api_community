@@ -7,7 +7,9 @@ import {FavoriteBorderOutlined, FavoriteIcon} from '@material-ui/icons/';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
+import { CardActionArea } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -22,6 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
       details: {
         display: 'flex',
         flexDirection: 'column',
+        width: '100%'
       },
       content: {
         flex: '2 6 auto',
@@ -30,6 +33,9 @@ const useStyles = makeStyles((theme: Theme) =>
       cover: {
         width: '100%',
         height: 'auto'
+      },
+      added: {
+
       }
     }),
   );
@@ -49,6 +55,7 @@ export default function ProductsCard({product, key, maker, comments, image, tags
         />
         <div className={classes.details}>
           <CardContent className={classes.content}>
+          <Typography variant="subtitle2" color="textSecondary" className={classes.added}>Added on {product.attributes.added}</Typography>
             <Typography component="h6" variant="h6">
               {product.attributes.name}
             </Typography>
@@ -56,12 +63,14 @@ export default function ProductsCard({product, key, maker, comments, image, tags
               {maker}
             </Typography>
             <Typography>{product.attributes.description}</Typography>
-            {tags.map( tag => <Typography variant="subtitle2" className="tag">{tag}</Typography>)}
+            {tags.map( tag => <Typography variant="subtitle2" color="textSecondary" className="tag">{tag}</Typography>)}
+
           </CardContent>
-          <Button>
-          <Typography variant="subtitle2">{comments}</Typography>
-            <CommentOutlinedIcon></CommentOutlinedIcon>
-          </Button>
+          <CardActions>
+            <Button size="small">
+              <Typography variant="subtitle2" color="textSecondary">{comments} Comments</Typography>
+            </Button>
+          </CardActions>
         </div>
         <div className="like">
           <Button variant="outlined" className="like-button" minHeight="64" minWidth="68" aria-label="like">
