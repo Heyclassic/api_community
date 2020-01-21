@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   include Rails.application.routes.url_helpers
   acts_as_taggable
+  acts_as_votable
   belongs_to :user
   has_many :comments
   has_many_attached :images

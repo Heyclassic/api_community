@@ -1,0 +1,71 @@
+body {
+  /* background-image: url('../images/heath.jpg'); */
+  background-color: rgb(240, 240, 240);
+  background-size: 100%;
+  background-attachment: fixed;
+}
+@media (min-width: 996px) {
+  header {
+    margin-bottom: 2.5rem;
+  }
+  header h1{
+    padding-left: 1.7rem;
+  }
+  .MuiTypography-h4 {
+    padding-bottom: 1rem;
+  }
+  .products, .news {
+    padding-top: 5rem;
+  }
+  .products {
+    padding-left: 2rem;
+  }
+  .news {
+    padding-left: 6.5rem;
+  }
+  .news-grid {
+    margin-left: 6rem !important;
+  }
+  .like {
+    display: flex;
+    align-items: center;
+    margin-left: 50%;
+  }
+  .like-button {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+  }
+  .like-caption {
+    font-size: 10px;
+  }
+  .button-flex {
+    display: flex;
+    flex-direction: column;
+  }
+  .MuiTypography-subtitle2.like-caption {
+    margin-top: 2.2rem;
+    margin-left: -1.2rem;
+  }
+
+  .MuiSvgIcon-fontSizeSmall {
+    font-size: 1.3rem;
+  }
+
+  .tag {
+    width: auto;
+    height: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6px;
+    font-size: 14px;
+    list-style: none;
+    border-radius: 6px;
+    background: #0052cc75;
+    margin-right: 1rem !important;
+  }
+  .tag-title {
+        margin-top: 3px;
+    }
+}
